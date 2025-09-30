@@ -1,7 +1,79 @@
 #4장-> 플러터 필수 개념 이해하기
 
-1. 플러터 아키텍처
+_플러터 아키텍처_
 <3계층 구조>
-⑴ Framework(Dart) → 앱 개발자가 주로 사용한다.
+⑴ Framework(Dart) → 앱 개발자가 주로 사용.
 ⑵ Engine(C/ C++) → 랜더링 및 코어 기능.
 ⑶ Embedder(Platform) → 플랫폼별 구현.
+
+
+#### *각 주요 구성 요소
+1) Embedder[임베더]
+´각 플랫폼별 네이티브 코드(Android: Java/C++, iOS: Objective-C)
+­˙화면 렌더링, 이벤트 처리, 접근성 기능 등을 제공.
+
+2) Engine[엔진]
+­˙C++로 작성된 핵심 렌더링 엔진.
+˙Skia 그래픽 라이브러리 활용.
+˙파일/네트워크 I/O, 텍스트 레이아웃 처리.
+
+3) Framework(프레임워크)
+˙Dart언어로 작성된 반응형 UI 프레임워크.
+˙Cupertino/Material 디자인 시스템.
+˙위젯 시스템과 상태 관리.
+
+
+#### 위젯 시스템 (Widget System)
+-- 버튼, 텍스트, 패딩, 마진 모드 위젯이다.
+-- 레고 블록처럼 조합하여 UI를 구성한다.
+
+※참고: "플러터에서 모든 것은 위젯"
+
+
+
+
+**** 기억할 내용 요약
+
+1. ˝위젯 선택 기준
+- 상태 변경 필요 →→→→ StatefulWidget
+- 상태 변경 없음 →→→→ StatelessWidget
+- 데이터 공유 필요 →→→→ InheritedWidget/ Provider
+
+
+
+2. ˝라이프사이클 활용
+- 초기화: `initState()`
+- 상태 변경: `setState()`
+- 정리 작업: `dispose()`
+- Context 필요한 초기화: `didChangeDependencies()`
+
+
+
+3. ˝레이아웃 구성 팁
+- Row/Column으로 기본 구조 잡기
+- Expanded로 유연한 공간 배분
+- Stack/Positioned로 겹침 효과
+- ListView/GridView로 스크롤 구현
+
+
+
+4. ˝성능 최적화
+- const생성자 활용
+- 불필요한 setState최소화
+- 적절한 위젯 타입 선택
+
+
+
+
+
+
+
+
+----실전 실무 활용 팁----
+1} 상태 관리: 단순한 경우 setState, 복잡한 경우 Provider/Bloc
+
+2} 레이아웃: 먼저 큰 구조를 잡고 세부사항 조정
+
+3} 애니메이션: "암시적 애니메이션으로 시작, 필요시 명시적 애니메이션"
+
+4} 라우팅: 'routes 사전 정의로 체계적인 네비게이션 구성'
