@@ -83,3 +83,10 @@ Widget createBody2()
       Expanded(
         child: Container(
           height: 40,
+          color: Color.red,
+          margin: const EdgeInset.all(5),
+        ),    //Container
+      ),    //Expanded
+    ],
+  );    //Row
+}
